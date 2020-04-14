@@ -35,7 +35,13 @@ namespace NhapTienHoc
                     obj.maGV = dt.Rows[i]["Mã giáo viên"].ToString();
                     obj.thang = dt.Rows[i]["Tháng"].ToString();
                     obj.soTien = dt.Rows[i]["Tổng số tiền"].ToString();
-                    obj.trangThai = dt.Rows[i]["Trạng thái nộp"].ToString();
+                    if(dt.Rows[i]["Trạng thái nộp"].ToString().Equals("Chưa nộp tiền"))
+                    {
+                        obj.trangThai = "0";
+                    }else if (dt.Rows[i]["Trạng thái nộp"].ToString().Equals("Đã nộp tiền"))
+                    {
+                        obj.trangThai = "1";
+                    }
                     obj.maLop = dt.Rows[i]["Mã lớp"].ToString();
                     listDuLieuDuaLenDataBase.Add(obj);
                 }
